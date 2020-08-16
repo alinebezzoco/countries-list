@@ -1,6 +1,10 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
+import styled from 'styled-components';
+
+const Card = styled.div`
+`
 
 const countries = gql`
 { 
@@ -27,10 +31,11 @@ function Home() {
 
   const renderList = (list) => (
     <ul>
-      {list.map(({ name, capital }) => (
+      {list.map(({ name, capital, flag }) => (
         <li>
-          {name}
-          {capital}
+          <p>País: {name}</p>
+          <p>Capital: {capital}</p>
+          <img src={flag.svgFile} width="92" />
         </li>
       ))}
     </ul>
