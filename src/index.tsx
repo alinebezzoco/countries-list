@@ -1,14 +1,22 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import Home from "./pages/home/home";
-import * as serviceWorker from "./serviceWorker";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import * as serviceWorker from './serviceWorker';
+import { ApolloProvider } from "react-apollo";
+import ApolloClient from 'apollo-boost';
+import Home from './views/home/home';
+
+export const client = new ApolloClient({
+  uri: 'https://countries-274616.ew.r.appspot.com',
+});
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <ApolloProvider client={client}>
+      <Home />
+    </ApolloProvider>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
