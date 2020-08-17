@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import styled from 'styled-components';
@@ -6,14 +7,12 @@ import styled from 'styled-components';
 const Card = styled.div`
 `
 
-const countries = gql`
+const GET_COUNTRIES = gql`
 { 
   Country {
+    _id
     name
     capital
-    area
-    population
-    numericCode
     flag {
       svgFile
     }
@@ -25,22 +24,26 @@ const countries = gql`
 `;
 
 function Home() {
-  const { loading, error, data } = useQuery(countries);
+  const { loading, error, data } = useQuery(GET_COUNTRIES);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Ocorreu um erro ao carregar as informações</p>;
 
-  const renderList = (list) => (
+  return (
     <ul>
-      {list.map(({ name, capital, flag }) => (
-        <li>
-          <p>País: {name}</p>
-          <p>Capital: {capital}</p>
-          <img src={flag.svgFile} width="92" />
+      {data.Country.map(item => (
+        <li key={item._id}>
+          <p>País: {item.name}</p>
+          <p>Capital: {item.capital}</p>
+          <p>Top Level Domains: {item.topLevelDomains.name}</p>
+
+          <img src={item.flag.svgFile} width="92" />
+
+          <Link to={`/details/${item._id}`}>Saiba mais</Link>
+
         </li>
       ))}
     </ul>
   );
-  return renderList(data.Country);
 }
 
 export default Home;
