@@ -1,28 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
 import styled from 'styled-components';
+import GET_COUNTRIES from '../../api/GET_COUNTRIES';
 
 const Card = styled.div`
 `
-
-const GET_COUNTRIES = gql`
-{ 
-  Country {
-    _id
-    name
-    capital
-    flag {
-      svgFile
-    }
-    topLevelDomains {
-      name
-    }
-  }
-}
-`;
-
 function Home() {
   const { loading, error, data } = useQuery(GET_COUNTRIES);
   if (loading) return <p>Loading...</p>;
