@@ -3,14 +3,19 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from 'apollo-boost';
+import { InMemoryCache } from "apollo-cache-inmemory";
 import * as serviceWorker from './serviceWorker';
 import Home from './views/home/home';
 import Details from './views/details/details';
 
-export const client = new ApolloClient({
-  uri: 'https://countries-274616.ew.r.appspot.com',
-});
 
+const client = new ApolloClient({
+  cache: new InMemoryCache({
+    freezeResults: true
+  }),
+  uri: 'https://countries-274616.ew.r.appspot.com',
+  assumeImmutableResults: true,
+});
 
 ReactDOM.render(
   <Router>
