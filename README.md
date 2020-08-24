@@ -56,4 +56,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Add Semaphore CI
 - Create loading component and remove loading message in home and details page
 - Add toast when user update country infos
-- Use Typescript
+- Use Typescript 
+- Add GMaps and calc the distance between the select country and five nearest countries 
