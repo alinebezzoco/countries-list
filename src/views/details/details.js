@@ -24,7 +24,7 @@ function Details({ match }) {
   }, [queryCountry, match.params.id]);
 
   // TODO: create a component and customize loading adding an icon and error notifications
-  if (loading) return <p>Carregando...</p>;
+  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message} </p>;
 
   return (
