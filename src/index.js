@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from "@apollo/client";
 import * as serviceWorker from "./serviceWorker";
 import { client } from "./services";
-
 import Home from "./views/home/home";
 import Details from "./views/details/details";
+import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>
