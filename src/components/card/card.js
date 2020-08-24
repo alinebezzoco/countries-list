@@ -14,22 +14,26 @@ const CardContainer = styled.div`
 `;
 
 const CardImage = styled.img`
-  width: 20%;
   height: auto;
   padding-right: 20px;
+  width: 20%;
 `;
 
 const CardContent = styled.div`
-  displat: flex;
+  display: flex;
   flex-direction: column;
 `;
 
 const CardTitle = styled.h2`
   line-height: 10px;
-  margin-top: 5px;
+  margin: 0;
 `;
 
 const CardDescription = styled.p``;
+
+const CardLink = styled(Link)`
+  text-decoration: none;
+`;
 
 export function Card({ id, name, capital, flag }) {
   return (
@@ -45,9 +49,9 @@ export function Card({ id, name, capital, flag }) {
       <CardContent>
         <CardTitle>{name}</CardTitle>
         <CardDescription>{capital}</CardDescription>
-        <Link to={`/details/${id}`} data-testid="card-more">
+        <CardLink to={`/details/${id}`} data-testid="card-more">
           More +
-        </Link>
+        </CardLink>
       </CardContent>
     </CardContainer>
   );
