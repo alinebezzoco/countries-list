@@ -1,6 +1,6 @@
 ## Countries List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and Apollo Client.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## How to run this project
 
