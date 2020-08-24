@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import styled from "styled-components";
 import { useCountry } from "../../hooks/useCountry";
-import { Form } from "../../components/form/form";
 import { CHANGE_COUNTRY_INFO_MUTATION } from "../../services/mutations";
+import { Form } from "../../components/form/form";
 
 const Container = styled.div`
   display: block;
@@ -23,8 +23,10 @@ function Details({ match }) {
     });
   }, [queryCountry, match.params.id]);
 
+  // TODO: create a component and customize loading adding an icon and error notifications
   if (loading) return <p>Carregando...</p>;
-  if (error) return <p>Error: {error} </p>;
+  if (error) return <p>Error: {error.message} </p>;
+
   return (
     <Container>
       {country && <Form onUpdate={changeCountry} country={country} />}
